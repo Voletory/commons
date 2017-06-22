@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<pool-config>
+
+	<!-- JMS连接池策略 -->
+	<jms-connection-pool alias="sessionSynchrony">
+		<initialPoolSize>2</initialPoolSize>
+		<maxPoolSize>3</maxPoolSize>
+		<minPoolSize>2</minPoolSize>
+		<ifEmpty-wait>false</ifEmpty-wait>
+		<clear-period>5000</clear-period>
+		<!-- exceed 'clear-period' -->
+		<show-status>900000</show-status>
+	</jms-connection-pool>
+
+	<!-- JMS连接策略 -->
+	
+	<!-- BBS_MIRROR_A生产 -->
+	<jms-connection-strategy alias="producer_bbs_mirror_a" poolAlias="sessionSynchrony">
+		<user></user>
+		<password></password>
+		<url>tcp://waphuaren.com:61616</url>
+		<!-- 'queue' or 'topic' -->
+		<kind>topic</kind>
+		<subject>BBS_MIRROR_A</subject>
+		<!-- 'producer' or 'consumer' -->
+		<type>producer</type>
+		<receive-timeout>0</receive-timeout>
+		<liveTime>600000</liveTime>
+	</jms-connection-strategy>
+	<!-- BBS_MIRROR_A消费 -->
+	<jms-connection-strategy alias="consumer_bbs_mirror_a" poolAlias="sessionSynchrony">
+		<user></user>
+		<password></password>
+		<url>tcp://waphuaren.com:61616</url>
+		<!-- 'queue' or 'topic' -->
+		<kind>topic</kind>
+		<subject>BBS_MIRROR_A</subject>
+		<!-- 'producer' or 'consumer' -->
+		<type>consumer</type>
+		<receive-timeout>1000</receive-timeout>
+		<liveTime>600000</liveTime>
+	</jms-connection-strategy>
+
+	<!-- BBS_MIRROR_B生产 -->
+	<jms-connection-strategy alias="producer_bbs_mirror_b" poolAlias="sessionSynchrony">
+		<user></user>
+		<password></password>
+		<url>tcp://waphuaren.com:61616</url>
+		<!-- 'queue' or 'topic' -->
+		<kind>topic</kind>
+		<subject>BBS_MIRROR_B</subject>
+		<!-- 'producer' or 'consumer' -->
+		<type>producer</type>
+		<receive-timeout>0</receive-timeout>
+		<liveTime>600000</liveTime>
+	</jms-connection-strategy>
+	<!-- BBS_MIRROR_B消费 -->
+	<jms-connection-strategy alias="consumer_bbs_mirror_b" poolAlias="sessionSynchrony">
+		<user></user>
+		<password></password>
+		<url>tcp://waphuaren.com:61616</url>
+		<!-- 'queue' or 'topic' -->
+		<kind>topic</kind>
+		<subject>BBS_MIRROR_B</subject>
+		<!-- 'producer' or 'consumer' -->
+		<type>consumer</type>
+		<receive-timeout>1000</receive-timeout>
+		<liveTime>600000</liveTime>
+	</jms-connection-strategy>
+	
+	<!-- GAME_MIRROR生产 -->
+	<jms-connection-strategy alias="producer_game_mirror" poolAlias="sessionSynchrony">
+		<user></user>
+		<password></password>
+		<url>tcp://waphuaren.com:61616</url>
+		<!-- 'queue' or 'topic' -->
+		<kind>topic</kind>
+		<subject>GAME_MIRROR</subject>
+		<!-- 'producer' or 'consumer' -->
+		<type>producer</type>
+		<receive-timeout>0</receive-timeout>
+		<liveTime>600000</liveTime>
+	</jms-connection-strategy>
+	<!-- GAME_MIRROR消费 -->
+	<jms-connection-strategy alias="consumer_game_mirror" poolAlias="sessionSynchrony">
+		<user></user>
+		<password></password>
+		<url>tcp://waphuaren.com:61616</url>
+		<!-- 'queue' or 'topic' -->
+		<kind>topic</kind>
+		<subject>GAME_MIRROR</subject>
+		<!-- 'producer' or 'consumer' -->
+		<type>consumer</type>
+		<receive-timeout>1000</receive-timeout>
+		<liveTime>600000</liveTime>
+	</jms-connection-strategy>
+
+</pool-config>

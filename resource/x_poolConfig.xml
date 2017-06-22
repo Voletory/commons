@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<pool-config>
+
+	<!-- 线程池策略 -->
+	<thread-pool alias="default">
+		<initialPoolSize>1</initialPoolSize>
+		<maxPoolSize>10</maxPoolSize>
+		<minPoolSize>1</minPoolSize>
+		<clear-period>3000</clear-period>
+		<!-- exceed 'clear-period' -->
+		<show-status></show-status>
+	</thread-pool>
+
+	<!-- JMS连接池策略 -->
+	<jms-connection-pool alias="default">
+		<initialPoolSize>1</initialPoolSize>
+		<maxPoolSize>10</maxPoolSize>
+		<minPoolSize>3</minPoolSize>
+		<ifEmpty-wait>false</ifEmpty-wait>
+		<clear-period>3000</clear-period>
+		<!-- exceed 'clear-period' -->
+		<show-status></show-status>
+	</jms-connection-pool>
+
+	<!-- SOCKET连接池策略 -->
+	<socket-connection-pool alias="default">
+		<initialPoolSize>1</initialPoolSize>
+		<maxPoolSize>10</maxPoolSize>
+		<minPoolSize>2</minPoolSize>
+		<ifEmpty-wait>false</ifEmpty-wait>
+		<clear-period>5000</clear-period>
+		<!-- exceed 'clear-period' -->
+		<show-status></show-status>
+	</socket-connection-pool>
+
+
+
+	<!-- 线程策略 -->
+	<thread-strategy alias="default">
+		<sleepTime>1000</sleepTime>
+	</thread-strategy>
+
+	<!-- JMS连接策略 -->
+	<jms-connection-strategy alias="default" poolAlias="default">
+		<user></user>
+		<password></password>
+		<url>tcp://192.168.0.11:61616</url>
+		<!-- 'queue' or 'topic' -->
+		<kind>queue</kind>
+		<subject>visitLog</subject>
+		<!-- 'producer' or 'consumer' -->
+		<type>consumer</type>
+		<receive-timeout>0</receive-timeout>
+		<liveTime>20000</liveTime>
+	</jms-connection-strategy>
+
+	<!-- SOCKET连接策略 -->
+	<socket-connection-strategy alias="default">
+		<remote-address></remote-address>
+		<remote-port></remote-port>
+		<bind-local isBind="true">
+			<local-address>127.0.0.1</local-address>
+			<local-port>12345</local-port>
+		</bind-local>
+		<!-- 'TCP' or 'UDP' -->
+		<connect-mode type="TCP">
+			<!-- 'true' or 'false'  just UDP this property is necessity -->
+			<property isProxy="false">
+				<proxy-address>127.0.0.1</proxy-address>
+				<proxy-port>8081</proxy-port>
+			</property>
+		</connect-mode>
+		<connect-timeout>0</connect-timeout>
+		<liveTime>20000</liveTime>
+	</socket-connection-strategy>
+
+</pool-config>

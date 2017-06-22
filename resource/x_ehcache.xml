@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<ehcache> 
+
+   <!--maxElementsInMemory 缓存最大数目  -->
+   <!--eternal 缓存是否持久  -->
+   <!--overflowToDisk 是否保存到磁盘，当系统当机时  -->
+   <!--timeToIdleSeconds 当缓存闲置n秒后销毁  -->
+   <!--timeToLiveSeconds 当缓存存活n秒后销毁  -->
+
+　<diskStore path="java.io.tmpdir"/>  
+　　	 <defaultCache 
+        maxElementsInMemory="10000" 
+		eternal="false" 							
+		overflowToDisk="true" 
+		timeToIdleSeconds="300" 
+		timeToLiveSeconds="180" 
+		diskPersistent="false" 
+	 />
+	
+     <!-- User--><!-- 空闲10分钟,存活一天 -->
+	 <cache name="user"
+        maxElementsInMemory="50000"
+        eternal="false"
+        timeToIdleSeconds="600"    
+        timeToLiveSeconds="86400"  
+        overflowToDisk="false"
+        diskPersistent="false"
+     />
+     
+     <!-- Photo--><!-- 空闲10分钟,存活一天 -->
+	 <cache name="photo"
+        maxElementsInMemory="50000"
+        eternal="false"
+        timeToIdleSeconds="600"    
+        timeToLiveSeconds="86400"  
+        overflowToDisk="false"
+        diskPersistent="false"
+     />  
+</ehcache>
