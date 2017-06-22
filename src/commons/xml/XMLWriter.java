@@ -1,4 +1,4 @@
-package xml;
+package commons.xml;
 
 import java.io.IOException;
 import java.io.OutputStream;

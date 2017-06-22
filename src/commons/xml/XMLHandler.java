@@ -1,4 +1,4 @@
-package xml;
+package commons.xml;
 
 import java.io.File;
 import java.io.FileOutputStream;
