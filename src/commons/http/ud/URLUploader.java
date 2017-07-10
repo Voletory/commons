@@ -9,13 +9,12 @@ import java.io.RandomAccessFile;
 import java.net.URL;
 import java.net.URLConnection;
 
-import commons.io.StreamUtils;
-
 /**
  * URL上传
  * 
  * @author bailey.fu
  * @date May 25, 2010
+ * @update 2017-07-03 10:42
  * @version 1.0
  * @description
  */
@@ -32,19 +31,14 @@ public class URLUploader {
 
 	public void uploadFile() throws IOException {
 		URL path = new URL(sourceUrl);
-		InputStream is = null;
-		BufferedInputStream bis = null;
-		DataInputStream dis = null;
-		RandomAccessFile raf = null;
-		try {
-			URLConnection conn = path.openConnection();
+		URLConnection conn = path.openConnection();
+		target = new File(targetName);
+		try (InputStream is = conn.getInputStream();
+				BufferedInputStream bis = new BufferedInputStream(is);
+				DataInputStream dis = new DataInputStream(bis);
+				RandomAccessFile raf = new RandomAccessFile(target, "rw");) {
 			conn.connect();
-			is = conn.getInputStream();
-			bis = new BufferedInputStream(is);
-			dis = new DataInputStream(bis);
-			target = new File(targetName);
-			raf = new RandomAccessFile(target, "rw");
-			byte[] buf = new byte[102400];
+			byte[] buf = new byte[1024];
 			int num = dis.read(buf);
 			while (num != (-1)) {
 				raf.write(buf, 0, num);
@@ -53,8 +47,6 @@ public class URLUploader {
 			}
 		} catch (IOException ioe) {
 			throw ioe;
-		} finally {
-			StreamUtils.close(dis, bis, is, raf);
 		}
 	}
 

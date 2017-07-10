@@ -14,6 +14,7 @@ import java.util.Map;
 import org.springframework.util.CollectionUtils;
 
 import commons.codec.Charset;
+import commons.log.CLogger;
 
 /**
  * 访问网络工具
@@ -58,7 +59,7 @@ public final class NETSnatchUtil {
 			isr.close();
 			is.close();
 		} catch (Exception e) {
-			System.out.println("Error From NETSnatchUtil : " + e);
+			CLogger.error("Error From NETSnatchUtil : ", e);
 			return null;
 		} finally {
 			if (conn != null) {
@@ -141,7 +142,7 @@ public final class NETSnatchUtil {
 			isr.close();
 			is.close();
 		} catch (Exception e) {
-			System.out.println("Error From NETSnatchUtil : " + e);
+			CLogger.error("Error From NETSnatchUtil : ", e);
 			return null;
 		} finally {
 			if (conn != null) {

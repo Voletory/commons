@@ -5,19 +5,19 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 
 import javax.servlet.http.HttpServletResponse;
-
-import commons.io.StreamUtils;
 
 /**
  * 下载
  * 
  * @author bailey.fu
  * @date May 25, 2010
- * @version 1.0
+ * @update 2017-07-03 10:34
+ * @version 1.1
  * @description
  */
 public class DownLoader {
@@ -51,21 +51,15 @@ public class DownLoader {
 			response.setContentType("application/bin");
 			response.setHeader("Content-Disposition", "attachment; filename=" + file.getName());
 		}
-		OutputStream out = null;
-		BufferedInputStream br = null;
 
 		byte[] buf = new byte[1024];
 		int len = 0;
-		try {
-			br = new BufferedInputStream(new FileInputStream(file));
-			out = response.getOutputStream();
+		try (InputStream is = new FileInputStream(file); BufferedInputStream br = new BufferedInputStream(is); OutputStream out = response.getOutputStream();) {
 			while ((len = br.read(buf)) > 0) {
 				out.write(buf, 0, len);
 			}
 		} catch (IOException ioe) {
 			throw ioe;
-		} finally {
-			StreamUtils.close(br, out);
 		}
 	}
 }
