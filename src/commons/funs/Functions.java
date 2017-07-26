@@ -20,6 +20,9 @@ import commons.lang.NumberUtils;
  */
 public class Functions {
 	public static Function<Object, Object> identity = t -> t;
+	public static <T>Function<T,T> identity(){
+		return t->t;
+	}
 
 	public static Function<String, String> emptyIfNull = (t) -> t == null ? StringUtils.EMPTY : t;
 
