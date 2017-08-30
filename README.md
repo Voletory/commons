@@ -7,6 +7,19 @@ Bean拷贝、序列化、反射
 ### codec
 Base64,Hex,AES,DES,DESede,RSA,MD5,SHA1,SHA224,SHA256,SHA384,SHA512的实现
 
+### codec.encryption
+提供对bean的指定属性的加解密功能
+key的配置：
+<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+     <property name="staticMethod" value="com.kunpu.framework.security.beanutil.SecretKeeper.setStringSecrets"/>
+     <property name="arguments">
+     	<map>
+     		<!-- 加密卡信息的密匙;取默认名,在使用注解时就无需设置secretName -->
+     		<entry key="DEFAULT" value="ea0d39c305765142ac9d91c89d42a605" />
+     	</map>
+     </property>
+</bean>
+
 ### collections
 集和工具、可计数迭代器、随机迭代器、顺序迭代器、滚动迭代集和
 

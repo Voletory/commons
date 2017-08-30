@@ -1,8 +1,10 @@
 package commons.util;
 
 import java.text.DecimalFormat;
-import java.util.HashMap;
 import java.util.Map;
+
+import org.apache.commons.collections.map.LRUMap;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * 数字格式化类
@@ -14,17 +16,28 @@ import java.util.Map;
  */
 public final class NumberFormat {
 
-	private static Map<String, DecimalFormat> dfMap = new HashMap<String, DecimalFormat>();
-
+	@SuppressWarnings("unchecked")
+	private static Map<String, ThreadLocal<DecimalFormat>> dfMap = new LRUMap();
 	private static DecimalFormat getDecimalFormat(String format) {
-		if (format == null || format.trim().equals(""))
+		if (StringUtils.isBlank(format)) {
 			return null;
-		DecimalFormat decimalFormat = dfMap.get(format);
-		if (decimalFormat == null) {
-			decimalFormat = new DecimalFormat(format);
-			dfMap.put(format, decimalFormat);
 		}
-		return decimalFormat;
+		try {
+			ThreadLocal<DecimalFormat> decimalFormat = dfMap.get(format);
+			if (decimalFormat == null) {
+				decimalFormat = new ThreadLocal<DecimalFormat>() {
+					@Override
+					protected DecimalFormat initialValue() {
+						return new DecimalFormat(format);
+					}
+				};
+				dfMap.put(format, decimalFormat);
+			}
+			return decimalFormat.get();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new DecimalFormat(format);
 	}
 
 	/**
