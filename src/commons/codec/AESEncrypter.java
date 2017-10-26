@@ -132,13 +132,9 @@ public class AESEncrypter {
 	}
 
 	public void encodeFile(String file, String destFile) throws RuntimeException {
-		InputStream is = null;
-		OutputStream out = null;
-		CipherInputStream cis = null;
-		try {
-			is = new FileInputStream(file);
-			out = new FileOutputStream(destFile);
-			cis = new CipherInputStream(is, enCipher);
+		try(InputStream is = new FileInputStream(file);
+			OutputStream out = new FileOutputStream(destFile);
+			CipherInputStream cis = new CipherInputStream(is, enCipher)) {
 			byte[] buffer = new byte[1024];
 			int r;
 			while ((r = cis.read(buffer)) > 0) {
@@ -146,8 +142,6 @@ public class AESEncrypter {
 			}
 		} catch (Exception e) {
 			throw new RuntimeException("AESEncrypt encodeFile error. Cause: " + e);
-		} finally {
-			StreamUtils.close(out, is, cis);
 		}
 	}
 
@@ -182,13 +176,9 @@ public class AESEncrypter {
 	}
 
 	public void decodeFile(String file, String destFile) throws RuntimeException {
-		InputStream is = null;
-		OutputStream out = null;
-		CipherOutputStream cos = null;
-		try {
-			is = new FileInputStream(file);
-			out = new FileOutputStream(destFile);
-			cos = new CipherOutputStream(out, deCipher);
+		try(InputStream is = new FileInputStream(file);
+			OutputStream out = new FileOutputStream(destFile);
+			CipherOutputStream cos = new CipherOutputStream(out, deCipher)) {
 			byte[] buffer = new byte[1024];
 			int r;
 			while ((r = is.read(buffer)) >= 0) {
@@ -196,8 +186,6 @@ public class AESEncrypter {
 			}
 		} catch (Exception e) {
 			throw new RuntimeException("AESEncrypt decodeFile error. Cause: " + e);
-		} finally {
-			StreamUtils.close(is, out, cos);
 		}
 	}
 

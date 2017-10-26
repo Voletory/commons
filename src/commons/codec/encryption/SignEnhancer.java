@@ -23,7 +23,7 @@ import commons.lang.StringUtils;
  */
 public class SignEnhancer {
 	private static final String SIGN_NAME = "_KPF_SECURITY_IS_ENCRYPTED_";
-	private static final String EXTEND_NAME = "$WithSignOfKPBS";
+	private static final String EXTEND_NAME = "$WithSignOfX";
 	private static Map<String, Class<?>> enhancedClazzMap = new HashMap<>();
 	@SuppressWarnings("unchecked")
 	static <T> T makeSign(T t, String signValue) {
