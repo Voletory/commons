@@ -11,8 +11,8 @@ import org.apache.commons.lang3.StringUtils;
  * 
  * @author bailey.fu
  * @date Oct 12, 2009
- * @version 2.0
- * @update 2016-12-09 13:26
+ * @version 2.1
+ * @update 2018-06-28
  * @description
  */
 public final class B64Encrypter {
@@ -105,6 +105,9 @@ public final class B64Encrypter {
 			sb.append((char) ((b1 << 2) | ((b2 & 0x30) >>> 4)));
 			/* b3 */
 			do {
+				if(i>=data.length){
+					return sb.toString().getBytes(Charset.ISO8859_1.VALUE);
+				}
 				b3 = data[i++];
 				if (b3 == 61)
 					return sb.toString().getBytes(Charset.ISO8859_1.VALUE);
@@ -115,6 +118,9 @@ public final class B64Encrypter {
 			sb.append((char) (((b2 & 0x0f) << 4) | ((b3 & 0x3c) >>> 2)));
 			/* b4 */
 			do {
+				if(i>=data.length){
+					return sb.toString().getBytes(Charset.ISO8859_1.VALUE);
+				}
 				b4 = data[i++];
 				if (b4 == 61)
 					return sb.toString().getBytes(Charset.ISO8859_1.VALUE);
