@@ -4,6 +4,7 @@
  */
 package commons.beanutils;
 
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,5 +40,21 @@ public class BeanCopierUtils {
 			BEANCOPIER_MAP.put(key, beanCopier);
 		}
 		beanCopier.copy(source, target, null);
+	}
+	public static void copyParentAttribute(Object source, Object target) throws RuntimeException{
+		if (source == null || target == null)
+			return;
+		try{
+			Class<?> clazz=target.getClass();
+			while (clazz != Object.class) {
+				clazz = clazz.getSuperclass();
+				for(Field f:clazz.getDeclaredFields()){
+					f.setAccessible(true);
+					f.set(target, f.get(source));
+				}
+			}
+		}catch(Exception e){
+			throw new RuntimeException(e);
+		}
 	}
 }

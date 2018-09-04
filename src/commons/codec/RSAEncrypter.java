@@ -53,8 +53,8 @@ public class RSAEncrypter {
 	private Cipher pbcEnCipher = null;
 	private Cipher pbcDeCipher = null;
 	private B64Encrypter b64Encrypter = null;
-	private int MAX_ENCRYPT_BLOCK = 53;
-	private int MAX_DECRYPT_BLOCK = 64;
+	private int MAX_ENCRYPT_BLOCK = 117;
+	private int MAX_DECRYPT_BLOCK = 128;
 
 	private RSAEncrypter(String publicKey, String privateKey) {
 		init(publicKey, privateKey, B64Encrypter.DEFAULT_ALPHABET);

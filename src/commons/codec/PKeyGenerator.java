@@ -13,6 +13,9 @@ import java.security.spec.X509EncodedKeySpec;
 import java.util.HashMap;
 import java.util.Map;
 
+import sun.security.rsa.RSAPrivateCrtKeyImpl;
+import sun.security.rsa.RSAPublicKeyImpl;
+
 /**
  * 系统生成公/私钥
  * 
@@ -89,4 +92,22 @@ public class PKeyGenerator {
 		return (T) keyPair.getPublic();
 	}
 
+	public static void main(String[] args) throws Exception{
+		RSAPublicKeyImpl pubk=createPublicKey();
+		RSAPrivateCrtKeyImpl prik=createPrivateKey();
+		String publicKey=B64Encrypter.encrypt(pubk.encode());
+		String privateKey=B64Encrypter.encrypt(prik.encode());
+		System.out.println(publicKey);
+		System.out.println(privateKey);
+		publicKey="MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAIxq6RtQQWWW78SWDHY2+zfC5RgPuTy7kFsaQI+4o21SbG92DZCtW9CRZvtKRlYj/Jk7F2yS3PAZuYWjx2ntTj0CAwEAAQ**";
+		privateKey="MIIBVAIBADANBgkqhkiG9w0BAQEFAASCAT4wggE6AgEAAkEAjGrpG1BBZZbvxJYMdjb7N8LlGA+5PLuQWxpAj7ijbVJsb3YNkK1b0JFm+0pGViP8mTsXbJLc8Bm5haPHae1OPQIDAQABAkAzfPRTBp+kP69Vl2ukYU7GyJk2tHVI9sHdFgg8awjKCdNtP1kT+5AbDwJMgyAUsskVBKZwB7qJnug77rq0FLWhAiEA7omVVCiowc76y+0HRMKAZxM1n6o5XeIvHs0aXA6Q3MUCIQCWsngkJRmpVEDuY0np4DljOPt96MiUKinHFM1QcGKzGQIgDu/+se554ukbO3n0YpHriIjjasQ2I3LukHc3l1wyJiECIQCBfxmojc0QaltlvyKb/Fe0QRo0J159nAHMlr6b+geGuQIgX/bVglGG+SlRintLrtSMg4yi/o26SLG+Xo/GDdwl7kQ*";
+		System.out.println(publicKey.length()+"publicKey : "+publicKey);
+		System.out.println(privateKey.length()+"privateKey : "+privateKey);
+		RSAEncrypter re=RSAEncrypter.getInstance(publicKey, privateKey);
+		String sss=MD5Encrypter.encrypt("a123sa中作a").toLowerCase();
+		System.out.println(sss);
+		String s;
+		System.out.println(s=re.encryptByPrivateKey(sss.getBytes()));
+		System.out.println(new String(re.decryptByPublicKey(s)));
+	}
 }
