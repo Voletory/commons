@@ -1,11 +1,11 @@
-package com.lz.components.common.log;
+package commons.log;
 
 /**
  * LoggerAdapter工厂类
  * 
  * @author fuli
  * @date 下午7:41:59
- * @version 1.0.0 Copyright 本内容仅限于杭州霖梓网络科技有限公司内部传阅，禁止外泄以及用于其他的商业目的
+ * @version 1.0.0
  */
 public final class LoggerAdapterFactory {
 	private LoggerAdapterFactory() {

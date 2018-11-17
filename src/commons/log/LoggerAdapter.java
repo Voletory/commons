@@ -1,13 +1,13 @@
-package com.lz.components.common.log;
+package commons.log;
 
-import com.lz.components.common.log.agent.Slf4jAgent;
+import commons.log.agent.Slf4jAgent;
 
 /**
  * 日志记录适配器
  * 
  * @author fuli
  * @date 下午7:36:32
- * @version 1.0.0 Copyright 本内容仅限于杭州霖梓网络科技有限公司内部传阅，禁止外泄以及用于其他的商业目的
+ * @version 1.0.0
  */
 public class LoggerAdapter {
 	private final LogAgent[] loggers;

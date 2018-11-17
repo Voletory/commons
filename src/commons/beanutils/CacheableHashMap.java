@@ -1,4 +1,4 @@
-package com.lz.components.common.beanutil;
+package commons.beanutils;
 
 import java.util.HashMap;
 import java.util.function.Function;
@@ -9,7 +9,7 @@ import java.util.function.Supplier;
  * 
  * @author fuli
  * @date 2018年8月13日
- * @version 1.0.0 Copyright 本内容仅限于杭州霖梓网络科技有限公司内部传阅，禁止外泄以及用于其他的商业目的
+ * @version 1.0.0
  */
 public class CacheableHashMap<K, V> extends HashMap<K, V> {
 	private static final long serialVersionUID = -8450383477709484792L;

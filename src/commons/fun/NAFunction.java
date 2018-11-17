@@ -9,5 +9,5 @@ package commons.fun;
  */
 @FunctionalInterface
 public interface NAFunction {
-	void apply() throws Exception;
+	void apply() throws RuntimeException;
 }

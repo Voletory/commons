@@ -1,12 +1,13 @@
-package com.lz.components.common.log.agent;
+package commons.log.agent;
 
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.lz.components.common.log.LogAgent;
-import com.lz.components.common.log.LogRoute;
-import com.lz.components.common.log.LogType;
+import commons.log.LogAgent;
+import commons.log.LogRoute;
+import commons.log.LogType;
+
 
 /**
  * 默认日志记录代理 SLF4J实现;该类并不强制使用logback,依然是根据classpath的具体jar包来选择具体实现

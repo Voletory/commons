@@ -1,4 +1,4 @@
-package com.lz.components.common.beanutil;
+package commons.beanutils;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -9,20 +9,19 @@ import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 
-import com.lz.components.common.exception.LzRuntimeException;
 
 /**
  * Bean转Map<String,String>
  * 
  * @author fuli
  * @date 2018年6月12日
- * @version 1.0.0 Copyright 本内容仅限于杭州霖梓网络科技有限公司内部传阅，禁止外泄以及用于其他的商业目的
+ * @version 1.0.0
  */
 public interface ToMapAble {
-	default Map<String, String> toStringMap(String...excludeFields) throws LzRuntimeException {
+	default Map<String, String> toStringMap(String...excludeFields){
 		return toStringMap(false, excludeFields);
 	}
-	default Map<String, String> toStringMap(boolean ignoreBlankOrNull,String...excludeFields) throws LzRuntimeException {
+	default Map<String, String> toStringMap(boolean ignoreBlankOrNull,String...excludeFields) {
 		Map<String, String> map = new HashMap<>();
 		try {
 			Class<?> clazz = this.getClass();
@@ -55,8 +54,10 @@ public interface ToMapAble {
 				}
 				clazz = clazz.getSuperclass();
 			}
+		} catch (RuntimeException e) {
+			throw e;
 		} catch (Exception e) {
-			throw new LzRuntimeException(e);
+			throw new RuntimeException(e);
 		}
 		return map;
 	}

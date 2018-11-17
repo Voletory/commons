@@ -1,4 +1,4 @@
-package com.lz.components.common.util.variable;
+package commons.variable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,8 +6,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.http.util.Asserts;
 
-import com.lz.components.common.log.holder.CommonLoggerHolder;
-import com.lz.components.common.util.function.NAFunction;
+import commons.fun.NAFunction;
+import commons.log.holder.CommonLoggerHolder;
 
 /**
  * 通用Action执行器</p>

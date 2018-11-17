@@ -1,4 +1,4 @@
-package com.lz.components.common.log;
+package commons.log;
 
 /**
  * 通用日志类型

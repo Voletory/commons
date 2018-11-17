@@ -1,13 +1,15 @@
-/**
- * X
- * Copyright (c) 2014-2014 X company,Inc.All Rights Reserved.
- */
 package commons.beanutils;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import commons.log.LogType;
+import commons.log.LoggerAdapter;
+import commons.log.LoggerAdapterFactory;
 import net.sf.cglib.beans.BeanCopier;
 
 /**
@@ -63,7 +65,7 @@ public class BeanCopierUtils {
 	 * @return
 	 * @throws BusinessRuntimeException
 	 */
-	public static <T> T copyOne2One(Object source, Class<T> target) throws LzRuntimeException {
+	public static <T> T copyOne2One(Object source, Class<T> target) {
 		if (source == null || target == null) {
 			return null;
 		}
@@ -71,9 +73,10 @@ public class BeanCopierUtils {
 		try {
 			instance = target.newInstance();
 			copyProperties(source, instance);
+		} catch (RuntimeException e) {
+			throw e;
 		} catch (Exception e) {
-			LOGGER.error("对象拷贝异常:source=[{}] target=[{}]", source, target);
-			throw new LzRuntimeException(ExceptionCode.FAILED, e);
+			throw new RuntimeException(e);
 		}
 		return instance;
 	}
@@ -86,7 +89,7 @@ public class BeanCopierUtils {
 	 * @return
 	 * @throws BusinessRuntimeException
 	 */
-	public static <T> List<T> copyList2List(List<?> source, Class<T> target) throws LzRuntimeException {
+	public static <T> List<T> copyList2List(List<?> source, Class<T> target) {
 		if (source == null || target == null) {
 			return null;
 		}
@@ -100,7 +103,7 @@ public class BeanCopierUtils {
 		return result;
 	}
 	
-	public static <T> T[] copyArray2Array(Object[] source, Class<T> target) throws LzRuntimeException {
+	public static <T> T[] copyArray2Array(Object[] source, Class<T> target){
 		if (source == null || source.length == 0) {
 			return null;
 		}
@@ -140,7 +143,9 @@ public class BeanCopierUtils {
 					f.set(target, f.get(source));
 				}
 			}
-		}catch(Exception e){
+		}  catch (RuntimeException e) {
+			throw e;
+		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 	}

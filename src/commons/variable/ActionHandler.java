@@ -1,11 +1,10 @@
-package com.lz.components.common.util.variable;
+package commons.variable;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-import com.lz.components.common.util.function.NAFunction;
-
+import commons.fun.NAFunction;
 import io.reactivex.BackpressureStrategy;
 
 public abstract class ActionHandler{

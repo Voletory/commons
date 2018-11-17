@@ -1,4 +1,4 @@
-package com.lz.components.common.validation;
+package commons.validation;
 
 import java.lang.reflect.Method;
 
@@ -12,7 +12,7 @@ import org.springframework.core.ParameterNameDiscoverer;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import com.lz.components.common.log.holder.BizLoggerHolder;
+import commons.log.holder.BizLoggerHolder;
 
 /**
  * 验证注解处理
@@ -25,7 +25,7 @@ import com.lz.components.common.log.holder.BizLoggerHolder;
 @Order(1)
 @Component("validationAspect")
 public class ValidationAspect implements BizLoggerHolder {
-	@Pointcut("@annotation(com.lz.components.common.validation.RequireValidate)")
+	@Pointcut("@annotation(commons.validation.RequireValidate)")
 	public void handleValidation() {
 	}
 	@Around("handleValidation()")

@@ -1,12 +1,11 @@
-package com.lz.components.common.util.variable;
+package commons.variable;
 
 import java.util.concurrent.TimeUnit;
 
 import org.apache.http.util.Asserts;
 
-import com.lz.components.common.log.holder.CommonLoggerHolder;
-import com.lz.components.common.util.function.NAFunction;
-
+import commons.fun.NAFunction;
+import commons.log.holder.CommonLoggerHolder;
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;

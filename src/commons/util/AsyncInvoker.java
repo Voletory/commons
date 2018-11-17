@@ -1,4 +1,4 @@
-package com.lz.components.common.util;
+package commons.util;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -6,11 +6,10 @@ import java.util.function.Supplier;
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 
-import com.lz.components.common.log.LogType;
-import com.lz.components.common.log.LoggerAdapter;
-import com.lz.components.common.log.LoggerAdapterFactory;
-import com.lz.components.common.util.function.NAFunction;
-
+import commons.fun.NAFunction;
+import commons.log.LogType;
+import commons.log.LoggerAdapter;
+import commons.log.LoggerAdapterFactory;
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
 import io.reactivex.FlowableEmitter;

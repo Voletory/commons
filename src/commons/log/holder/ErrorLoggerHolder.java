@@ -1,15 +1,15 @@
-package com.lz.components.common.log.holder;
+package commons.log.holder;
 
-import com.lz.components.common.log.LogType;
-import com.lz.components.common.log.LoggerAdapter;
-import com.lz.components.common.log.LoggerAdapterFactory;
+import commons.log.LogType;
+import commons.log.LoggerAdapter;
+import commons.log.LoggerAdapterFactory;
 
 /**
  * Error日志记录器
  * 
  * @author fuli
  * @date 2018年7月2日
- * @version 1.0.0 Copyright 本内容仅限于杭州霖梓网络科技有限公司内部传阅，禁止外泄以及用于其他的商业目的
+ * @version 1.0.0
  */
 public interface ErrorLoggerHolder {
 	LoggerAdapter LOGGER = LoggerAdapterFactory.getLogger(LogType.SYS_ERROR);

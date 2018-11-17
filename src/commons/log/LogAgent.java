@@ -1,11 +1,11 @@
-package com.lz.components.common.log;
+package commons.log;
 
 /**
  * 日志代理接口
  * 
  * @author fuli
  * @date 下午7:54:42
- * @version 1.0.0 Copyright 本内容仅限于杭州霖梓网络科技有限公司内部传阅，禁止外泄以及用于其他的商业目的
+ * @version 1.0.0
  */
 public interface LogAgent {
 	public LogRoute getLogRoute();
