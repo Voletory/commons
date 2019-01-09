@@ -28,6 +28,11 @@
 		</dependency>
     	<!-- RX -->
 		<dependency>
+			<groupId>org.reactivestreams</groupId>
+			<artifactId>reactive-streams</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
 		    <groupId>io.reactivex.rxjava2</groupId>
 		    <artifactId>rxjava</artifactId>
 		    <version>2.0.3</version>
@@ -58,16 +63,19 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>${spring.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
             <version>${spring.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>${spring.version}</version>
+            <scope>provided</scope>
         </dependency>
         <!-- Protostuff -->
 	     <dependency>
@@ -164,6 +172,7 @@
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
             <version>2.5</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
   
