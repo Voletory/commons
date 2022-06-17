@@ -12,7 +12,7 @@
       <commons-beanutils.version>1.9.3</commons-beanutils.version>
       <commons-codec.version>1.10</commons-codec.version>
       <protostuff.version>1.1.1</protostuff.version>
-      <fastjson.version>1.2.8</fastjson.version>
+      <fastjson.version>1.2.83</fastjson.version>
       <slf4j.version>1.7.12</slf4j.version>
       <apache-httpclient>4.3.6</apache-httpclient>
       <commons-httpclient>3.1</commons-httpclient>
